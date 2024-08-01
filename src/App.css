@@ -1,38 +1,114 @@
+/* General Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  line-height: 1.6;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
 .App {
-  text-align: center;
+  position: relative;
+  overflow: hidden; /* Prevent overflow */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Main content area */
+.main-content {
+  transition: transform 0.3s ease;
+  position: relative;
+  width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Shrink main content for active panels */
+.main-content.shrinked-projects {
+  transform: translateX(50vw); /* Move to the left to make room for sliding content from the right */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.main-content.shrinked-contact {
+  transform: translateX(-50vw); /* Move to the right to make room for sliding content from the left */
+}
+
+/* Shrink Home area when Contact is active */
+.main-content.shrinked-contact #home {
+  transform: translateX(25vw); /* Scale down Home area and move it to fit in the right half */
+  transform-origin: left center; /* Ensure scaling and positioning happens from the left center */
+}
+
+/* Sliding Sections */
+.slide-in {
+  position: fixed; /* Fixed positioning to keep panels in place while sliding */
+  top: 0;
+  bottom: 0;
+  width: 50vw; /* Adjust width as needed */
+  background-color: #2b2b2b;
+  color: #e0e0e0;
+  overflow-y: auto; /* Scroll if content overflows */
+  padding: 2rem;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  transition: transform 0.3s ease;
+  z-index: 1000; /* Ensure panels are above other content */
 }
 
-.App-link {
-  color: #61dafb;
+/* Sliding effect from left */
+.slide-in.left {
+  left: 0;
+  transform: translateX(-50vw); /* Start offscreen to the left */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Sliding effect from right */
+.slide-in.right {
+  right: 0;
+  transform: translateX(50vw); /* Start offscreen to the right */
+}
+
+/* Slide-in animations */
+.main-content.shrinked-projects .slide-in.left {
+  transform: translateX(0); /* Slide in from the left */
+}
+
+.main-content.shrinked-projects .slide-in.left.skills {
+  transform: translateX(-50vw); /* Slide in from further left for Skills */
+}
+
+.main-content.shrinked-contact .slide-in.right {
+  transform: translateX(50vw); /* Slide in from the right */
+}
+
+/* Close button */
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #ff7043;
+  color: #e0e0e0;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1001; /* Ensure button is above sliding panels */
+}
+
+.close-button.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Home Page Styles */
+#home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full viewport height */
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  padding: 0 2rem; /* Space for sliding effect */
+  box-sizing: border-box;
+  transition: transform 0.3s ease; /* Smooth transition for scaling */
 }
