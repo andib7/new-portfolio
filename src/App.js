@@ -8,14 +8,13 @@ import './App.css';
 function App() {
   const [activePanel, setActivePanel] = useState(null);
   const [showSkills, setShowSkills] = useState(false);
+  const [hoveredProject, setHoveredProject] = useState(null);
 
   const handleButtonClick = (panel) => {
     if (activePanel === panel) {
-      // If the clicked panel is already active, close it
       setActivePanel(null);
       setShowSkills(false);
     } else {
-      // Open the clicked panel
       if (panel === 'projects') {
         setShowSkills(true);
       } else {
@@ -31,12 +30,12 @@ function App() {
         <Home onButtonClick={handleButtonClick} />
         <div className={`slide-in left ${activePanel === 'projects' ? 'visible' : ''}`}>
           <button className={`close-button ${activePanel === 'projects' ? 'visible' : ''}`} onClick={() => handleButtonClick('projects')}>
-            Home
+            Close Projects
           </button>
-          <Projects />
+          <Projects onProjectHover={setHoveredProject} />
         </div>
         <div className={`slide-in left ${showSkills && activePanel === 'projects' ? 'visible skills' : ''}`}>
-          <Skills />
+          <Skills project={hoveredProject} />
         </div>
         <div className={`slide-in right ${activePanel === 'contact' ? 'visible' : ''}`}>
           <Contact onButtonClick={() => handleButtonClick('contact')} />

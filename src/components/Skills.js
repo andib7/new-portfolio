@@ -1,11 +1,20 @@
 import React from 'react';
 
-function Skills() {
+function Skills({ project }) {
   return (
-    <div className="container">
+    <div className="skills-container">
       <h2>Skills</h2>
-      <p>List of my skills...</p>
-      {/* Add skill details here */}
+      <div className="skills-list">
+        {project ? (
+          project.map((skill, index) => (
+            <div key={index} className="skill-card">
+              <p>{skill}</p>
+            </div>
+          ))
+        ) : (
+          <p>Hover over a project to see the skills used or gained.</p>
+        )}
+      </div>
     </div>
   );
 }

@@ -1,3 +1,5 @@
+/* src/App.css */
+
 /* General Styles */
 body {
   font-family: 'Roboto', sans-serif;
@@ -111,4 +113,59 @@ body {
   padding: 0 2rem; /* Space for sliding effect */
   box-sizing: border-box;
   transition: transform 0.3s ease; /* Smooth transition for scaling */
+}
+
+/* Projects Styles */
+.projects-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.project-card {
+  background-color: #2b2b2b;
+  border-radius: 8px;
+  padding: 1rem;
+  width: calc(50% - 1rem);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.project-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Skills Styles */
+.skills-container {
+  background-color: #2b2b2b;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.skill-card {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: calc(50% - 1rem);
+  text-align: center;
+}
+
+.skills-list p {
+  text-align: center;
+  color: #e0e0e0;
 }
