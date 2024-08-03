@@ -4,18 +4,50 @@ function Projects({ onProjectHover }) {
   const projects = [
     {
       id: 1,
-      name: 'Project Title 1',
-      image: 'path/to/1.jpg',
+      name: 'Cassidys Castle Cleaners',
+      image: '/images/CCCgame.png',
       description: 'Description of the project.',
-      link: 'link/to/project1',
+      link: 'https://sunnieside-boi.itch.io/cassidys-castle-cleaners',
       skills: ['React', 'CSS'],
     },
     {
       id: 2,
-      name: 'Project Title 2',
-      image: 'path/to/2.jpg',
+      name: 'Pixel Blend Lines',
+      image: 'images/Parrot.png',
       description: 'Description of the project.',
-      link: 'link/to/project2',
+      link: 'https://editor.p5js.org/andibarron7/sketches/wBok8T-hd',
+      skills: ['JavaScript', 'Node.js'],
+    },
+    {
+      id: 3,
+      name: 'Nutrition App',
+      image: 'images/NutritionPage.png',
+      description: 'Description of the project.',
+      link: 'https://github.com/tkj02/Nutrition',
+      skills: ['JavaScript', 'Node.js'],
+    },
+    {
+      id: 4,
+      name: 'Sheep Runner',
+      image: 'images/Sheep.png',
+      description: 'Description of the project.',
+      link: 'https://andib7.github.io/Sheep-Runner/',
+      skills: ['JavaScript', 'Node.js'],
+    },
+    {
+      id: 5,
+      name: 'Grave Gamble',
+      image: 'images/Ghost.png',
+      description: 'Description of the project.',
+      link: 'https://anika-mahajan.github.io/AGraveGamble/',
+      skills: ['JavaScript', 'Node.js'],
+    },
+    {
+      id: 6,
+      name: 'Womboto Roboto',
+      image: 'images/Robot.png',
+      description: 'Description of the project.',
+      link: 'https://aidanbacon.itch.io/womboto-roboto',
       skills: ['JavaScript', 'Node.js'],
     },
     // Add more projects as needed
@@ -32,10 +64,10 @@ function Projects({ onProjectHover }) {
             onMouseEnter={() => onProjectHover(project.skills)}
             onMouseLeave={() => onProjectHover(null)}
           >
-            <h3>{project.name}</h3>
             <img src={project.image} alt={project.name} className="project-image" />
-            <p>{project.description}</p>
-            <a href={project.link} className="button" target="_blank" rel="noopener noreferrer">
+            <h3 className="project-title">{project.name}</h3>
+            <p className="project-description">{project.description}</p>
+            <a href={project.link} className="project-link" target="_blank" rel="noopener noreferrer">
               View Project
             </a>
           </div>
